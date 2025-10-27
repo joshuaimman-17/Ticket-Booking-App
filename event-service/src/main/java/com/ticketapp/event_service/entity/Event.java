@@ -32,17 +32,30 @@ public class Event {
 
     private String status;
 
+    @Column(name = "total_tickets", nullable = false)
+    private Integer totalTickets;
+
+    @Column(name = "ticket_price", nullable = false)
+    private Double ticketPrice;
+
+    @Column(name = "tickets_sold", nullable = false)
+    private Integer ticketsSold = 0;
+
     public Event() {
     }
 
     public Event(String title, String description, String location,
-                 LocalDateTime eventDate, String eventType, String status) {
+                 LocalDateTime eventDate, String eventType, String status,
+                 Integer totalTickets, Double ticketPrice) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.eventDate = eventDate;
         this.eventType = eventType;
         this.status = status;
+        this.totalTickets = totalTickets;
+        this.ticketPrice = ticketPrice;
+        this.ticketsSold = 0;
     }
 
     // Getters and Setters
@@ -101,5 +114,29 @@ public class Event {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Integer getTotalTickets() {
+        return totalTickets;
+    }
+
+    public void setTotalTickets(Integer totalTickets) {
+        this.totalTickets = totalTickets;
+    }
+
+    public Double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(Double ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public Integer getTicketsSold() {
+        return ticketsSold;
+    }
+
+    public void setTicketsSold(Integer ticketsSold) {
+        this.ticketsSold = ticketsSold;
     }
 }
