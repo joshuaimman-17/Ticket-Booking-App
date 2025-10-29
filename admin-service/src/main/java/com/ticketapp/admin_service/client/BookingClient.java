@@ -3,9 +3,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Map;
 
-@FeignClient(name = "booking-service")
+@FeignClient(name = "booking-service",url = "${BOOKING_SERVICE_URL:http://localhost:8082}")
 public interface BookingClient {
     @GetMapping("/bookings/admin/stats")
-    List<Object> getStats();
+    Map<String , Object> getStats();
 }

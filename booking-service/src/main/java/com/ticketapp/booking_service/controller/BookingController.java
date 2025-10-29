@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -39,5 +40,11 @@ public class BookingController {
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Booking>> getByUser(@PathVariable UUID userId) {
         return ResponseEntity.ok(bookingService.getBookingsByUser(userId));
+    }
+
+    // ✅ ADMIN BOOKING STATS
+    @GetMapping("/admin/stats")
+    public ResponseEntity<Map<String, Object>> getAdminStats() {
+        return ResponseEntity.ok(bookingService.getBookingStats());
     }
 }

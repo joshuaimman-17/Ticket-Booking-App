@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Service
 public class AdminService {
+
     private final AdminRepository repo;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -17,6 +18,9 @@ public class AdminService {
     }
 
     public Admin signup(Admin admin, String password) {
+        if (admin.getEmail() == null || password == null) {
+            throw new IllegalArgumentException("Email and password are required");
+        }
         admin.setPasswordHash(encoder.encode(password));
         return repo.save(admin);
     }

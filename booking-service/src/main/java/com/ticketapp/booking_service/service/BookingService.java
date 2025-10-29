@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -26,6 +27,33 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
         this.eventClient = eventClient;
         this.ticketClient = ticketClient;
+    }
+
+    // ✅ Booking stats for admin dashboard
+    public Map<String, Object> getBookingStats() {
+        long totalBookings = bookingRepository.count();
+        long confirmedCount = bookingRepository.findAll().stream()
+                .filter(b -> b.getStatus() == BookingStatus.CONFIRMED)
+                .count();
+        long cancelledCount = bookingRepository.findAll().stream()
+                .filter(b -> b.getStatus() == BookingStatus.CANCELLED)
+                .count();
+        long pendingCount = bookingRepository.findAll().stream()
+                .filter(b -> b.getStatus() == BookingStatus.HOLD)
+                .count();
+
+        double totalRevenue = bookingRepository.findAll().stream()
+                .filter(b -> "SUCCESS".equalsIgnoreCase(b.getPaymentStatus()))
+                .mapToDouble(b -> b.getQuantity() * 500.0) // example ticket price
+                .sum();
+
+        return Map.of(
+                "totalBookings", totalBookings,
+                "confirmedBookings", confirmedCount,
+                "cancelledBookings", cancelledCount,
+                "pendingBookings", pendingCount,
+                "totalRevenue", totalRevenue
+        );
     }
 
     @Transactional
@@ -42,9 +70,8 @@ public class BookingService {
 
         Booking saved = bookingRepository.save(booking);
 
-        // ✅ Decrease available tickets (positive number)
+        // ✅ Decrease available tickets
         eventClient.updateTicketAvailability(dto.getEventId(), dto.getQuantity());
-
         return saved;
     }
 
@@ -76,9 +103,8 @@ public class BookingService {
         booking.setStatus(BookingStatus.CANCELLED);
         booking.setPaymentStatus("CANCELLED");
 
-        // ✅ Release tickets (negative number → add back)
+        // ✅ Release tickets
         eventClient.updateTicketAvailability(booking.getEventId(), -booking.getQuantity());
-
         return bookingRepository.save(booking);
     }
 
@@ -98,7 +124,6 @@ public class BookingService {
                     b.setStatus(BookingStatus.CANCELLED);
                     b.setPaymentStatus("EXPIRED");
                     try {
-                        // Negative quantity adds back tickets
                         eventClient.updateTicketAvailability(b.getEventId(), -b.getQuantity());
                     } catch (Exception e) {
                         System.err.println("Failed to release tickets: " + e.getMessage());
