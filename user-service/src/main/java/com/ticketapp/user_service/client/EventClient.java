@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-@FeignClient(name = "event-service", url = "${EVENT_SERVICE_URL:http://localhost:8080}")
+@FeignClient(name = "event-service", url = "${EVENT_SERVICE_URL:http://localhost:8083}")
 public interface EventClient {
     @GetMapping("/events/host/{hostId}")
     List<Object> getEventsByHost(@PathVariable UUID hostId);

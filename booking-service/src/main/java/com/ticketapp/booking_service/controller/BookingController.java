@@ -1,4 +1,5 @@
 package com.ticketapp.booking_service.controller;
+
 import com.ticketapp.booking_service.dto.BookingDTO;
 import com.ticketapp.booking_service.entity.Booking;
 import com.ticketapp.booking_service.service.BookingService;
@@ -19,7 +20,7 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @PostMapping
+    @PostMapping("/book")
     public ResponseEntity<Booking> createBooking(@RequestBody BookingDTO dto) {
         Booking booking = bookingService.createBooking(dto);
         return ResponseEntity.created(URI.create("/bookings/" + booking.getBookingId())).body(booking);

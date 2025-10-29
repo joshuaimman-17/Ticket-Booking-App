@@ -3,16 +3,17 @@ package com.ticketapp.booking_service.service;
 import com.ticketapp.booking_service.client.EventClient;
 import com.ticketapp.booking_service.client.TicketClient;
 import com.ticketapp.booking_service.dto.BookingDTO;
-import com.ticketapp.booking_service.exception.ResourceNotFoundException;
 import com.ticketapp.booking_service.entity.Booking;
 import com.ticketapp.booking_service.entity.BookingStatus;
+import com.ticketapp.booking_service.exception.ResourceNotFoundException;
 import com.ticketapp.booking_service.repository.BookingRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BookingService {
@@ -41,9 +42,8 @@ public class BookingService {
 
         Booking saved = bookingRepository.save(booking);
 
-        // Decrease available tickets
-        Map<String, Integer> payload = Map.of(dto.getTicketType(), -dto.getQuantity());
-        eventClient.updateTicketAvailability(dto.getEventId(), payload);
+        // ✅ Decrease available tickets (positive number)
+        eventClient.updateTicketAvailability(dto.getEventId(), dto.getQuantity());
 
         return saved;
     }
@@ -56,6 +56,7 @@ public class BookingService {
         booking.setStatus(BookingStatus.CONFIRMED);
         booking.setPaymentStatus("SUCCESS");
         booking.setPaymentId(paymentId);
+
         Booking saved = bookingRepository.save(booking);
 
         try {
@@ -75,9 +76,8 @@ public class BookingService {
         booking.setStatus(BookingStatus.CANCELLED);
         booking.setPaymentStatus("CANCELLED");
 
-        // Release tickets
-        Map<String, Integer> payload = Map.of(booking.getTicketType(), booking.getQuantity());
-        eventClient.updateTicketAvailability(booking.getEventId(), payload);
+        // ✅ Release tickets (negative number → add back)
+        eventClient.updateTicketAvailability(booking.getEventId(), -booking.getQuantity());
 
         return bookingRepository.save(booking);
     }
@@ -86,7 +86,7 @@ public class BookingService {
         return bookingRepository.findByUserId(userId);
     }
 
-    // Auto-cancel HOLD bookings older than 5 minutes
+    // ✅ Auto-cancel HOLD bookings older than 5 minutes
     @Scheduled(fixedRate = 60000)
     @Transactional
     public void autoCancelExpiredHolds() {
@@ -97,9 +97,9 @@ public class BookingService {
                 .forEach(b -> {
                     b.setStatus(BookingStatus.CANCELLED);
                     b.setPaymentStatus("EXPIRED");
-                    Map<String, Integer> payload = Map.of(b.getTicketType(), b.getQuantity());
                     try {
-                        eventClient.updateTicketAvailability(b.getEventId(), payload);
+                        // Negative quantity adds back tickets
+                        eventClient.updateTicketAvailability(b.getEventId(), -b.getQuantity());
                     } catch (Exception e) {
                         System.err.println("Failed to release tickets: " + e.getMessage());
                     }
