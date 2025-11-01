@@ -32,9 +32,9 @@ public class AdminController {
         this.bookingClient = bookingClient;
     }
 
-    // ===============================
+    // ===================================
     // 🔹 AUTH ENDPOINTS
-    // ===============================
+    // ===================================
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody AdminSignupRequest req) {
@@ -73,9 +73,9 @@ public class AdminController {
         ));
     }
 
-    // ===============================
+    // ===================================
     // 🔹 ADMIN FEATURES
-    // ===============================
+    // ===================================
 
     private boolean isAdmin(String role) {
         return role != null && role.equalsIgnoreCase("ADMIN");
@@ -83,11 +83,23 @@ public class AdminController {
 
     // ✅ Fetch pending hosts from user-service
     @GetMapping("/hosts/pending")
-    public ResponseEntity<?> getPendingHosts(@RequestHeader(value = "X-User-Role", required = false) String role) {
-        if (!isAdmin(role)) return ResponseEntity.status(403).body("Access denied");
-        return ResponseEntity.ok("Call user-service /admin/hosts/pending");
-    }
+    public ResponseEntity<?> getPendingHosts(
+            @RequestHeader(value = "X-User-Role", required = false) String role) {
 
+        if (!isAdmin(role)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Access denied"));
+        }
+
+        try {
+            var pendingHosts = userClient.getPendingHosts();
+            return ResponseEntity.ok(pendingHosts);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "error", "Failed to fetch pending hosts",
+                    "details", e.getMessage()
+            ));
+        }
+    }
 
     // ✅ Approve host
     @PatchMapping("/hosts/{id}/approve")
@@ -95,37 +107,82 @@ public class AdminController {
             @PathVariable UUID id,
             @RequestBody(required = false) HostApprovalRequest req,
             @RequestHeader(value = "X-User-Role", required = false) String role) {
-        if (!isAdmin(role)) return ResponseEntity.status(403).body("Access denied");
+
+        if (!isAdmin(role)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Access denied"));
+        }
+
         try {
             userClient.approveHost(id);
-            return ResponseEntity.ok("Host approved successfully");
+            return ResponseEntity.ok(Map.of("message", "Host approved successfully"));
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Failed to approve host: " + e.getMessage());
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "error", "Failed to approve host",
+                    "details", e.getMessage()
+            ));
+        }
+    }
+
+    // ✅ Reject host
+    @PatchMapping("/hosts/{id}/reject")
+    public ResponseEntity<?> rejectHost(
+            @PathVariable UUID id,
+            @RequestBody(required = false) HostApprovalRequest req,
+            @RequestHeader(value = "X-User-Role", required = false) String role) {
+
+        if (!isAdmin(role)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Access denied"));
+        }
+
+        try {
+            userClient.rejectHost(id);
+            return ResponseEntity.ok(Map.of("message", "Host rejected successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "error", "Failed to reject host",
+                    "details", e.getMessage()
+            ));
         }
     }
 
     // ✅ Delete event
     @DeleteMapping("/events/{id}")
-    public ResponseEntity<?> deleteEvent(@PathVariable UUID id,
-                                         @RequestHeader(value = "X-User-Role", required = false) String role) {
-        if (!isAdmin(role)) return ResponseEntity.status(403).body("Access denied");
+    public ResponseEntity<?> deleteEvent(
+            @PathVariable UUID id,
+            @RequestHeader(value = "X-User-Role", required = false) String role) {
+
+        if (!isAdmin(role)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Access denied"));
+        }
+
         try {
             eventClient.deleteEvent(id);
-            return ResponseEntity.ok("Event deleted successfully");
+            return ResponseEntity.ok(Map.of("message", "Event deleted successfully"));
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Failed to delete event: " + e.getMessage());
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "error", "Failed to delete event",
+                    "details", e.getMessage()
+            ));
         }
     }
 
     // ✅ Booking stats from booking-service
     @GetMapping("/stats")
-    public ResponseEntity<?> stats(@RequestHeader(value = "X-User-Role", required = false) String role) {
-        if (!isAdmin(role)) return ResponseEntity.status(403).body("Access denied");
+    public ResponseEntity<?> stats(
+            @RequestHeader(value = "X-User-Role", required = false) String role) {
+
+        if (!isAdmin(role)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Access denied"));
+        }
+
         try {
             var stats = bookingClient.getStats();
             return ResponseEntity.ok(stats);
         } catch (Exception ex) {
-            return ResponseEntity.ok("Booking stats unavailable: " + ex.getMessage());
+            return ResponseEntity.ok(Map.of(
+                    "error", "Booking stats unavailable",
+                    "details", ex.getMessage()
+            ));
         }
     }
 }
