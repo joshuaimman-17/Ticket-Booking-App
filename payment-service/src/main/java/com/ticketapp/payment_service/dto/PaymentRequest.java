@@ -12,6 +12,10 @@ public class PaymentRequest {
     private Double amount;
     private String currency = "INR";
 
+    // ✅ Added fields
+    private String upiId;
+    private String couponCode;
+
     public UUID getBookingId() { return bookingId; }
     public void setBookingId(UUID bookingId) { this.bookingId = bookingId; }
     public UUID getUserId() { return userId; }
@@ -20,4 +24,8 @@ public class PaymentRequest {
     public void setAmount(Double amount) { this.amount = amount; }
     public String getCurrency() { return currency; }
     public void setCurrency(String currency) { this.currency = currency; }
+    public String getUpiId() { return upiId; }
+    public void setUpiId(String upiId) { this.upiId = upiId; }
+    public String getCouponCode() { return couponCode; }
+    public void setCouponCode(String couponCode) { this.couponCode = couponCode; }
 }

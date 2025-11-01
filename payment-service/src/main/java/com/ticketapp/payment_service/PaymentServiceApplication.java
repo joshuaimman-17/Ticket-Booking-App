@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = "com.ticketapp.paymentservice.client")
+@EnableFeignClients
 @EnableDiscoveryClient
 public class PaymentServiceApplication {
 	public static void main(String[] args) {

@@ -27,7 +27,7 @@ public class BookingController {
         return ResponseEntity.created(URI.create("/bookings/" + booking.getBookingId())).body(booking);
     }
 
-    @PatchMapping("/{id}/confirm")
+    @PutMapping("/{id}/confirm")
     public ResponseEntity<Booking> confirmBooking(@PathVariable UUID id, @RequestParam String paymentId) {
         return ResponseEntity.ok(bookingService.confirmBooking(id, paymentId));
     }
