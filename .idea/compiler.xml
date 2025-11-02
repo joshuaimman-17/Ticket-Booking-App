@@ -15,11 +15,11 @@
         <module name="eureka-server" />
         <module name="notification-service" />
         <module name="admin-service" />
+        <module name="ticket-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chatbot-service" target="21" />
-      <module name="ticket-service" target="21" />
       <module name="user-service (1)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
