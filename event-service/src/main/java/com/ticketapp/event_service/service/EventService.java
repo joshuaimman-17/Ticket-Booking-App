@@ -1,19 +1,23 @@
 package com.ticketapp.event_service.service;
 
+import com.ticketapp.event_service.client.UserClient;
 import com.ticketapp.event_service.entity.Event;
 import com.ticketapp.event_service.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
 public class EventService {
 
     private final EventRepository repo;
+    private final UserClient userClient;
 
-    public EventService(EventRepository repo) {
+    public EventService(EventRepository repo, UserClient userClient) {
         this.repo = repo;
+        this.userClient = userClient;
     }
 
     // Get all events
@@ -21,8 +25,14 @@ public class EventService {
         return repo.findAll();
     }
 
-    // Add event
-    public Event addEvent(Event e) {
+    // ✅ Add event (only allowed for HOST users)
+    public Event addEvent(UUID userId, Event e) {
+        Map<String, Object> user = userClient.getUserById(userId);
+
+        if (user == null || !"HOST".equalsIgnoreCase((String) user.get("role"))) {
+            throw new RuntimeException("Only verified hosts can create events");
+        }
+
         return repo.save(e);
     }
 
@@ -42,7 +52,6 @@ public class EventService {
         Event event = repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
 
-        // Check available ticket count
         int remainingTickets = event.getTotalTickets() - event.getTicketsSold();
         if (ticketsSold > remainingTickets) {
             throw new RuntimeException("Not enough tickets available for event ID: " + id);

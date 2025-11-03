@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/events")
-@CrossOrigin(origins = "*") // Allow frontend access (important for microservices / web frontend)
+@CrossOrigin(origins = "*")
 public class EventController {
 
     private final EventService service;
@@ -27,11 +27,15 @@ public class EventController {
         return ResponseEntity.ok(events);
     }
 
-    // ✅ Add a new event
-    @PostMapping
-    public ResponseEntity<Event> addEvent(@RequestBody Event event) {
-        Event createdEvent = service.addEvent(event);
-        return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
+    // ✅ Add event (restricted to HOST)
+    @PostMapping("/create/{userId}")
+    public ResponseEntity<?> addEvent(@PathVariable UUID userId, @RequestBody Event event) {
+        try {
+            Event createdEvent = service.addEvent(userId, event);
+            return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+        }
     }
 
     // ✅ Get event by ID
@@ -50,15 +54,12 @@ public class EventController {
         return ResponseEntity.noContent().build();
     }
 
-    // ✅ PATCH endpoint to update ticket availability (e.g. increment sold tickets)
+    // ✅ Update ticket availability
     @PatchMapping("/{id}/tickets")
     public ResponseEntity<Event> updateTicketAvailability(
             @PathVariable UUID id,
             @RequestParam int ticketsSold) {
-
         Event updatedEvent = service.updateTicketAvailability(id, ticketsSold);
-        return (updatedEvent != null)
-                ? ResponseEntity.ok(updatedEvent)
-                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.ok(updatedEvent);
     }
 }
