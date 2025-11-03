@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ticket-service (1)" />
         <module name="payment-service" />
         <module name="event-service" />
-        <module name="booking-service" />
         <module name="api-gateway" />
         <module name="user-service" />
         <module name="eureka-server" />
@@ -19,6 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="booking-service" target="21" />
       <module name="chatbot-service" target="21" />
       <module name="user-service (1)" target="1.8" />
     </bytecodeTargetLevel>
@@ -34,6 +35,7 @@
       <module name="notification-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
       <module name="ticket-service" options="-parameters" />
+      <module name="ticket-service (1)" options="-parameters" />
       <module name="user-service" options="-parameters" />
       <module name="user-service (1)" options="" />
     </option>
