@@ -185,4 +185,24 @@ public class AdminController {
             ));
         }
     }
+    // Fetch all approved hosts
+    @GetMapping("/hosts/approved")
+    public ResponseEntity<?> getApprovedHosts(
+            @RequestHeader(value = "X-User-Role", required = false) String role) {
+
+        if (!isAdmin(role)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Access denied"));
+        }
+
+        try {
+            var hosts = userClient.getApprovedHosts();
+            return ResponseEntity.ok(hosts);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "error", "Failed to fetch approved hosts",
+                    "details", e.getMessage()
+            ));
+        }
+    }
+
 }

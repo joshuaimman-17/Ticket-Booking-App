@@ -47,4 +47,11 @@ public class BookingController {
     public ResponseEntity<Map<String, Object>> getAdminStats() {
         return ResponseEntity.ok(bookingService.getBookingStats());
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Booking> getBookingById(@PathVariable UUID id) {
+        return bookingService.getBookingById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }

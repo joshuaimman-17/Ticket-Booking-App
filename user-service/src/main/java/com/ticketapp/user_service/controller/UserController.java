@@ -55,12 +55,12 @@ public class UserController {
         return ResponseEntity.ok(service.applyHost(id, dto));
     }
 
-    @PatchMapping("/admin/hosts/{id}/approve")
+    @PutMapping("/admin/hosts/{id}/approve")
     public ResponseEntity<User> approveHost(@PathVariable UUID id) {
         return ResponseEntity.ok(service.approveHost(id));
     }
 
-    @PatchMapping("/admin/hosts/{id}/reject")
+    @PutMapping("/admin/hosts/{id}/reject")
     public ResponseEntity<User> rejectHost(@PathVariable UUID id) {
         return ResponseEntity.ok(service.rejectHost(id));
     }
@@ -78,4 +78,10 @@ public class UserController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    // Fetch all approved hosts
+    @GetMapping("/admin/hosts/approved")
+    public ResponseEntity<List<User>> getApprovedHosts() {
+        return ResponseEntity.ok(service.getApprovedHosts());
+    }
+
 }

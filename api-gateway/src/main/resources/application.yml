@@ -1,0 +1,132 @@
+# ==========================================
+# = API Gateway Configuration (fixed)
+# ==========================================
+spring:
+  application:
+    name: api-gateway
+
+  main:
+    web-application-type: reactive
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+      routes:
+        # ---------- USER SERVICE ----------
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # ---------- EVENT SERVICE ----------
+        - id: event-service
+          uri: lb://event-service
+          predicates:
+            - Path=/events/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # ---------- BOOKING SERVICE ----------
+        - id: booking-service
+          uri: lb://booking-service
+          predicates:
+            - Path=/bookings/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # ---------- ADMIN SERVICE ----------
+        - id: admin-service
+          uri: lb://admin-service
+          predicates:
+            - Path=/admin/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # ---------- PAYMENT SERVICE ----------
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/payments/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # ---------- TICKET SERVICE ----------
+        - id: ticket-service
+          uri: lb://ticket-service
+          predicates:
+            - Path=/tickets/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+      # ==========================================
+      # = Global CORS Configuration
+      # ==========================================
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "https://your-frontend-domain.com"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+              - PATCH
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+
+      # ==========================================
+      # = HTTP Client Timeout / Performance
+      # ==================================
+      httpclient:
+        connect-timeout: 8000
+        response-timeout: 15s
+
+# ==========================================
+# = Server
+# ==========================================
+server:
+  port: 8080
+
+# ==========================================
+# = Eureka Client Configuration
+# ==========================================
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:https://ticket-booking-app-id2r.onrender.com/eureka/}
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+
+# ==========================================
+# = Logging Configuration
+# ==========================================
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web: INFO
+    com.ticketapp: DEBUG
+
+# ==========================================
+# = Actuator Health Check
+# ==========================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

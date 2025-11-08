@@ -42,20 +42,23 @@ public class TicketService {
         this.bookingClient = bookingClient;
     }
 
-    public TicketRecord generateTicket(UUID bookingId, UUID userId, UUID eventId)
-            throws IOException, WriterException {
+    // ✅ Only bookingId is needed now
+    public TicketRecord generateTicket(UUID bookingId) throws IOException, WriterException {
 
-        // Fetch booking details from Booking service
+        // Fetch booking details
         Map<String, Object> bookingDetails = bookingClient.getBooking(bookingId);
+
+        if (bookingDetails == null || bookingDetails.isEmpty()) {
+            throw new IOException("Booking not found for ID: " + bookingId);
+        }
+
+        UUID userId = UUID.fromString((String) bookingDetails.get("userId"));
+        UUID eventId = UUID.fromString((String) bookingDetails.get("eventId"));
 
         Path dir = Path.of(ticketsPath);
         if (!Files.exists(dir)) Files.createDirectories(dir);
 
-        String qrText = String.format(
-                "TICKET|%s|%s|%s|%s",
-                bookingId, userId, eventId, LocalDateTime.now()
-        );
-
+        String qrText = String.format("TICKET|%s|%s|%s|%s", bookingId, userId, eventId, LocalDateTime.now());
         String filename = "ticket_" + bookingId + ".pdf";
         Path out = dir.resolve(filename);
 
@@ -67,7 +70,6 @@ public class TicketService {
         try (PDDocument doc = new PDDocument()) {
             PDPage page = new PDPage(PDRectangle.A6);
             doc.addPage(page);
-
             var pdImage = LosslessFactory.createFromImage(doc, qrImage);
 
             try (PDPageContentStream content = new PDPageContentStream(doc, page)) {
@@ -78,7 +80,7 @@ public class TicketService {
                 content.fill();
 
                 // === Header Bar ===
-                content.setNonStrokingColor(new Color(33, 150, 243)); // cinematic blue
+                content.setNonStrokingColor(new Color(33, 150, 243));
                 content.addRect(0, page.getMediaBox().getHeight() - 45, page.getMediaBox().getWidth(), 45);
                 content.fill();
 
@@ -98,13 +100,11 @@ public class TicketService {
                 drawLabelValue(content, "User ID:", userId.toString(), 25, y); y -= 15;
                 drawLabelValue(content, "Event ID:", eventId.toString(), 25, y); y -= 15;
 
-                if (bookingDetails != null && !bookingDetails.isEmpty()) {
-                    drawLabelValue(content, "Quantity:", String.valueOf(bookingDetails.getOrDefault("quantity", "N/A")), 25, y); y -= 15;
-                    drawLabelValue(content, "Amount:", "Rs " + bookingDetails.getOrDefault("amount", "N/A"), 25, y); y -= 15;
-                    drawLabelValue(content, "Payment ID:", String.valueOf(bookingDetails.getOrDefault("paymentId", "N/A")), 25, y); y -= 15;
-                    drawLabelValue(content, "Status:", String.valueOf(bookingDetails.getOrDefault("status", "N/A")), 25, y); y -= 15;
-                    drawLabelValue(content, "Ticket Type:", String.valueOf(bookingDetails.getOrDefault("ticketType", "Standard")), 25, y); y -= 20;
-                }
+                drawLabelValue(content, "Quantity:", String.valueOf(bookingDetails.getOrDefault("quantity", "N/A")), 25, y); y -= 15;
+                drawLabelValue(content, "Amount:", "Rs " + bookingDetails.getOrDefault("amount", "N/A"), 25, y); y -= 15;
+                drawLabelValue(content, "Payment ID:", String.valueOf(bookingDetails.getOrDefault("paymentId", "N/A")), 25, y); y -= 15;
+                drawLabelValue(content, "Status:", String.valueOf(bookingDetails.getOrDefault("status", "N/A")), 25, y); y -= 15;
+                drawLabelValue(content, "Ticket Type:", String.valueOf(bookingDetails.getOrDefault("ticketType", "Standard")), 25, y); y -= 20;
 
                 // Divider line
                 content.setStrokingColor(Color.LIGHT_GRAY);
@@ -129,8 +129,7 @@ public class TicketService {
                 content.beginText();
                 content.setFont(PDType1Font.HELVETICA_OBLIQUE, 8);
                 content.newLineAtOffset(75, 42);
-                content.showText("Generated: " + LocalDateTime.now()
-                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+                content.showText("Generated: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
                 content.endText();
 
                 content.beginText();
@@ -144,7 +143,7 @@ public class TicketService {
             doc.save(out.toFile());
         }
 
-        // === Save Ticket Record ===
+        // Save record
         TicketRecord rec = new TicketRecord();
         rec.setBookingId(bookingId);
         rec.setUserId(userId);
@@ -177,9 +176,7 @@ public class TicketService {
 
     public byte[] getTicketPdfData(String path) throws IOException {
         Path safePath = Path.of(path.replace("\\", "/"));
-        if (!Files.exists(safePath)) {
-            throw new IOException("Ticket file not found at: " + safePath.toAbsolutePath());
-        }
+        if (!Files.exists(safePath)) throw new IOException("Ticket file not found at: " + safePath.toAbsolutePath());
         return Files.readAllBytes(safePath);
     }
 }

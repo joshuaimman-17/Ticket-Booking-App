@@ -70,6 +70,13 @@ public class UserService {
                 .filter(u -> !u.isVerified() && u.getIdProofUrl() != null)
                 .toList();
     }
+    // Fetch all users with Role.HOST and verified
+    public List<User> getApprovedHosts() {
+        return repo.findAll().stream()
+                .filter(u -> u.getRole() == Role.HOST && u.isVerified())
+                .toList();
+    }
+
 
     public Optional<User> findById(UUID id) {
         return repo.findById(id);

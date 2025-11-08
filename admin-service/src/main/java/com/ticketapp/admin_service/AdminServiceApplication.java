@@ -1,4 +1,4 @@
-package com.example.admin_service;
+package com.ticketapp.admin_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
