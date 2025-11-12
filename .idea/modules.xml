@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ticket booking app.iml" filepath="$PROJECT_DIR$/.idea/ticket booking app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Ticket-Booking-App.iml" filepath="$PROJECT_DIR$/.idea/Ticket-Booking-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/user-service/src/main/main.iml" filepath="$PROJECT_DIR$/backend/user-service/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/eureka-server/src/main/main2.iml" filepath="$PROJECT_DIR$/backend/eureka-server/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/api-gateway/src/main/main3.iml" filepath="$PROJECT_DIR$/backend/api-gateway/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/payment-service/src/main/main4.iml" filepath="$PROJECT_DIR$/backend/payment-service/src/main/main4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/booking-service/src/main/main5.iml" filepath="$PROJECT_DIR$/backend/booking-service/src/main/main5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/event-service/src/main/main6.iml" filepath="$PROJECT_DIR$/backend/event-service/src/main/main6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/ticket-service/src/main/main7.iml" filepath="$PROJECT_DIR$/backend/ticket-service/src/main/main7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/admin-service/src/main/main8.iml" filepath="$PROJECT_DIR$/backend/admin-service/src/main/main8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/payment-service/src/test/test.iml" filepath="$PROJECT_DIR$/backend/payment-service/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/booking-service/src/test/test2.iml" filepath="$PROJECT_DIR$/backend/booking-service/src/test/test2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/api-gateway/src/test/test3.iml" filepath="$PROJECT_DIR$/backend/api-gateway/src/test/test3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/ticket-service/src/test/test4.iml" filepath="$PROJECT_DIR$/backend/ticket-service/src/test/test4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/user-service/src/test/test5.iml" filepath="$PROJECT_DIR$/backend/user-service/src/test/test5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/eureka-server/src/test/test6.iml" filepath="$PROJECT_DIR$/backend/eureka-server/src/test/test6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/event-service/src/test/test7.iml" filepath="$PROJECT_DIR$/backend/event-service/src/test/test7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/admin-service/src/test/test8.iml" filepath="$PROJECT_DIR$/backend/admin-service/src/test/test8.iml" />
     </modules>
   </component>
 </project>

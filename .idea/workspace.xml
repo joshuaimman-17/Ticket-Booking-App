@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9360db70-232d-415d-8961-ab34fa558fcf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ticket booking app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/AdminServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/client/BookingClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/client/EventClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/client/UserClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/controller/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/dto/AdminLoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/dto/AdminSignupRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/dto/HostApprovalRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/entity/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/repository/AdminRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/ticketapp/admin_service/service/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/test/java/com/example/admin_service/AdminServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/ticketapp/api_gateway/ApiGatewayApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/test/java/com/ticketapp/api_gateway/ApiGatewayApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/BookingServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/client/EventClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/client/TicketClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/config/FeignConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/controller/BookingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/dto/BookingDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/entity/Booking.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/entity/BookingStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/exception/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/repository/BookingRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketapp/booking_service/service/BookingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-service/src/test/java/com/ticketapp/booking_service/BookingServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/src/main/java/com/ticketapp/eureka_server/EurekaServerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/src/test/java/com/ticketapp/eureka_server/EurekaServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/java/com/ticketapp/event_service/EventServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/java/com/ticketapp/event_service/client/UserClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/java/com/ticketapp/event_service/controller/EventController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/java/com/ticketapp/event_service/entity/Event.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/java/com/ticketapp/event_service/repository/EventRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/java/com/ticketapp/event_service/service/EventService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/resources/application-mysql.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/resources/application-postgres.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-service/src/test/java/com/ticketapp/event_service/EventServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/PaymentServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/client/BookingClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/controller/PaymentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/dto/PaymentConfirmRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/dto/PaymentRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/dto/PaymentResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/entity/PaymentRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/repository/PaymentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/ticketapp/payment_service/service/PaymentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/test/java/com/ticketapp/payment_service/PaymentServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/java/com/ticketapp/ticket_service/TicketServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/java/com/ticketapp/ticket_service/client/BookingClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/java/com/ticketapp/ticket_service/controller/TicketController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/java/com/ticketapp/ticket_service/dto/TicketDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/java/com/ticketapp/ticket_service/entity/TicketRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/java/com/ticketapp/ticket_service/repository/TicketRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/java/com/ticketapp/ticket_service/service/TicketService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/src/test/java/com/ticketapp/ticket_service/TicketServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/UserServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/client/EventClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/dto/AuthRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/dto/AuthResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/dto/HostApplicationDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/ticketapp/user_service/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/test/java/com/ticketapp/user_service/UserServiceApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "cjchandru798"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/joshuaimman-17/Ticket-Booking-App.git",
+    "accountId": "7c602ffe-dd2c-4abd-ae3b-b3475ed6dd43"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="35NJtHqClYoKE3mtMvgA4Ay9VvY" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Project/Ticket-Booking-App",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9360db70-232d-415d-8961-ab34fa558fcf" name="Changes" comment="" />
+      <created>1762944811987</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762944811987</updated>
+    </task>
+    <servers />
+  </component>
+</project>
