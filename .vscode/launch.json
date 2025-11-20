@@ -1,0 +1,77 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "AdminServiceApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.admin_service.AdminServiceApplication",
+            "projectName": "admin-service"
+        },
+        {
+            "type": "java",
+            "name": "ApiGatewayApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.api_gateway.ApiGatewayApplication",
+            "projectName": "api-gateway"
+        },
+        {
+            "type": "java",
+            "name": "BookingServiceApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.booking_service.BookingServiceApplication",
+            "projectName": "booking-service"
+        },
+        {
+            "type": "java",
+            "name": "EurekaServerApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.eureka_server.EurekaServerApplication",
+            "projectName": "eureka-server"
+        },
+        {
+            "type": "java",
+            "name": "EventServiceApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.event_service.EventServiceApplication",
+            "projectName": "event-service"
+        },
+        {
+            "type": "java",
+            "name": "PaymentServiceApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.payment_service.PaymentServiceApplication",
+            "projectName": "payment-service"
+        },
+        {
+            "type": "java",
+            "name": "TicketServiceApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.ticket_service.TicketServiceApplication",
+            "projectName": "ticket-service"
+        },
+        {
+            "type": "java",
+            "name": "UserServiceApplication",
+            "request": "launch",
+            "mainClass": "com.ticketapp.user_service.UserServiceApplication",
+            "projectName": "user-service"
+        }
+    ]
+}

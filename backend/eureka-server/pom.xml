@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.4</version> <!-- ✅ Compatible with Spring Cloud 2023.0.x -->
+		<version>3.3.5</version> <!-- ✅ Compatible with Spring Cloud 2023.0.x -->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -20,7 +20,7 @@
 
 	<properties>
 		<java.version>21</java.version>
-		<spring-cloud.version>2023.0.1</spring-cloud.version>
+		<spring-cloud.version>2023.0.3</spring-cloud.version>
 	</properties>
 
 	<!-- ✅ Proper Spring Cloud dependency management -->

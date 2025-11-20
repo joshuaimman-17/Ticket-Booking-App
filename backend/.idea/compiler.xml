@@ -10,6 +10,7 @@
         <module name="ticket-service (1)" />
         <module name="payment-service" />
         <module name="event-service" />
+        <module name="booking-service" />
         <module name="api-gateway" />
         <module name="user-service" />
         <module name="eureka-server" />
@@ -19,7 +20,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="booking-service" target="21" />
       <module name="chatbot-service" target="21" />
       <module name="user-service (1)" target="1.8" />
     </bytecodeTargetLevel>
